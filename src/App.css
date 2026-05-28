@@ -82,14 +82,18 @@ main {
 
 .hero {
   align-self: center;
-  width: min(100%, 58rem);
+  justify-self: center;
+  display: grid;
+  width: min(100%, 62rem);
+  justify-items: center;
+  text-align: center;
 }
 
 .brand {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-bottom: clamp(3.5rem, 10vh, 7rem);
+  margin-bottom: clamp(1.25rem, 3vh, 2rem);
   color: rgba(246, 241, 232, 0.86);
   font-size: 0.95rem;
   font-weight: 700;
@@ -115,12 +119,25 @@ main {
   border-radius: 999px;
 }
 
+.model-stage {
+  position: relative;
+  width: clamp(14rem, 34vw, 25rem);
+  aspect-ratio: 1;
+  margin-bottom: clamp(1rem, 3vh, 1.75rem);
+}
+
+.model-stage canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 h1 {
   max-width: 11ch;
   margin: 0;
-  font-size: clamp(4.6rem, 15vw, 12rem);
+  font-size: clamp(3.8rem, 10vw, 7.5rem);
   font-weight: 760;
-  line-height: 0.86;
+  line-height: 0.9;
   letter-spacing: 0;
 }
 
@@ -209,7 +226,11 @@ h1 {
   }
 
   .brand {
-    margin-bottom: 4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .model-stage {
+    width: min(78vw, 20rem);
   }
 
   .status {
