@@ -1,0 +1,230 @@
+:root {
+  color-scheme: dark;
+  --ink: #f6f1e8;
+  --muted: rgba(246, 241, 232, 0.68);
+  --line: rgba(246, 241, 232, 0.18);
+  --panel: rgba(17, 17, 17, 0.36);
+  --charcoal: #111111;
+  --green: #80d6a3;
+  --rose: #f58aa6;
+  --amber: #e4b65e;
+  --cyan: #78c7d8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--charcoal);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  background:
+    linear-gradient(115deg, rgba(128, 214, 163, 0.18), transparent 38%),
+    linear-gradient(250deg, rgba(245, 138, 166, 0.14), transparent 42%),
+    linear-gradient(135deg, #111111 0%, #191512 46%, #101716 100%);
+  color: var(--ink);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  letter-spacing: 0;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.visual {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+.visual canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.18;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 34px 34px;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.4),
+    transparent 72%
+  );
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), transparent 72%);
+}
+
+main {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  min-height: 100vh;
+  padding: clamp(1.25rem, 3vw, 3rem);
+}
+
+.hero {
+  align-self: center;
+  width: min(100%, 58rem);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: clamp(3.5rem, 10vh, 7rem);
+  color: rgba(246, 241, 232, 0.86);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: lowercase;
+}
+
+.mark {
+  display: grid;
+  width: 2.5rem;
+  height: 2.5rem;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(246, 241, 232, 0.08);
+}
+
+.mark span {
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 2px solid var(--green);
+  border-top-color: var(--rose);
+  border-radius: 999px;
+}
+
+h1 {
+  max-width: 11ch;
+  margin: 0;
+  font-size: clamp(4.6rem, 15vw, 12rem);
+  font-weight: 760;
+  line-height: 0.86;
+  letter-spacing: 0;
+}
+
+.copy {
+  max-width: 35rem;
+  margin: clamp(1.5rem, 4vw, 2.5rem) 0 0;
+  color: var(--muted);
+  font-size: clamp(1.08rem, 2vw, 1.45rem);
+  line-height: 1.5;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-height: 3.35rem;
+  margin-top: clamp(2rem, 5vw, 3rem);
+  padding: 0 1rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  color: rgba(246, 241, 232, 0.78);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 1.5rem 5rem rgba(0, 0, 0, 0.24);
+  font-size: 0.98rem;
+  font-weight: 650;
+}
+
+.status::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: var(--green);
+  box-shadow: 0 0 1.1rem rgba(128, 214, 163, 0.72);
+}
+
+.footer {
+  align-self: end;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  color: rgba(246, 241, 232, 0.52);
+  font-size: 0.88rem;
+}
+
+.contacts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.7rem 1rem;
+}
+
+.contacts span {
+  color: rgba(246, 241, 232, 0.42);
+}
+
+.contacts a {
+  color: rgba(246, 241, 232, 0.84);
+  font-weight: 650;
+  text-decoration-color: rgba(128, 214, 163, 0.62);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+}
+
+.contacts a:hover {
+  color: var(--ink);
+  text-decoration-color: var(--green);
+}
+
+.contacts a:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 4px;
+}
+
+@media (max-width: 680px) {
+  body {
+    overflow: auto;
+  }
+
+  main {
+    min-height: 100svh;
+  }
+
+  .brand {
+    margin-bottom: 4rem;
+  }
+
+  .status {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .footer {
+    align-content: flex-end;
+    min-height: 6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .visual {
+    display: none;
+  }
+}
