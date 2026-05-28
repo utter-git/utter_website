@@ -102,7 +102,6 @@ function HeroModelViewer({
   useEffect(() => {
     const canvas = canvasRef.current;
     const container = canvas?.parentElement;
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     if (!canvas || !container) return;
 
@@ -192,12 +191,7 @@ function HeroModelViewer({
       camera.updateProjectionMatrix();
     }
 
-    function render(now: number) {
-      if (!reduceMotion.matches) {
-        modelGroup.rotation.y =
-          initialRotation[1] + Math.sin(now * 0.00055) * 0.12;
-      }
-
+    function render() {
       renderer.render(scene, camera);
       animationFrame = requestAnimationFrame(render);
     }
@@ -242,17 +236,10 @@ export default function App() {
 
       <main>
         <section className="hero" aria-labelledby="headline">
-          <div className="brand">
-            <div className="mark" aria-hidden="true">
-              <span />
-            </div>
-            <span>utter</span>
-          </div>
-
           <HeroModelViewer
             modelUrl={logoModelUrl}
             fitSize={3.2}
-            initialRotation={[Math.PI / 2, 0.2, 0]}
+            initialRotation={[Math.PI / 2, 0, 0]}
             modelOffset={[0, 0, 0]}
           />
 
